@@ -37,13 +37,13 @@ PORT( hcount,vcount : in STD_LOGIC_VECTOR(10 downto 0);
 end MY_CHAR_DRIVER;
 
 architecture Behavioral of MY_CHAR_DRIVER is
-signal char_col : std_logic_vector(6 downto 0);
-signal char_row : std_logic_vector(5 downto 0);
-begin
- char_col <= hcount(9 downto 3);  -- Character column in [0,79]
- char_row <= vcount(8 downto 3);  -- Character row in [0,59]
--- ASCII_CHAR <= char_row + char_col;
-ASCII_CHAR <= "0000001";
 
+signal char_col : std_logic_vector(4 downto 0);
+signal char_row : std_logic_vector(3 downto 0);
+begin
+    char_col <= hcount(9 downto 5); -- Character column in [0,19]
+    char_row <= vcount(8 downto 5); -- Character row in [0,14]
+
+ ASCII_CHAR <= "00" & (char_row + char_col);
 
 end Behavioral;

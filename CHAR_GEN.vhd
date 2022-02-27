@@ -50,6 +50,8 @@ signal ROM_ADDRESS : STD_LOGIC_VECTOR(11 downto 0);
 signal ROM_DATA : STD_LOGIC_VECTOR(31 downto 0);
 signal INTENSITY : STD_LOGIC;
 
+signal letter_count : STD_LOGIC_VECTOR(4 downto 0) := "00000";
+
 COMPONENT rom1kx8
   PORT (
     clka : IN STD_LOGIC;
@@ -63,6 +65,7 @@ my_rom : rom1kx8 PORT MAP (clka => clk25, addra => ROM_ADDRESS, douta => ROM_DAT
 
 pixel_row <= vcount(4 downto 0);
 pixel_col <= hcount(4 downto 0);
+
 
 
 ROM_ADDRESS <= ASCII_CHAR & pixel_row;  -- Generating ROM address
